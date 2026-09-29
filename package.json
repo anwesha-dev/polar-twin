@@ -1,0 +1,22 @@
+{
+  "name": "polar-twin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "POLAR TWIN — digital twin and decision-intelligence dashboard for Indian Antarctic research stations MAITRI and BHARATI (SIH26060 prototype, synthetic data).",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "chart.js": "4.4.4",
+    "three": "0.128.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>POLAR TWIN — Antarctic Station Operations · MAITRI &amp; BHARATI Digital Twin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="POLAR TWIN — AI-ready digital twin and decision-intelligence dashboard for the Indian Antarctic research stations MAITRI and BHARATI (synthetic data, SIH 2026 prototype).">
+<meta name="theme-color" content="#070d15">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
+<!-- Prebuilt React Three Fiber 3D twin (exposes window.PolarTwin3D). Loaded before the app module. -->
+<script defer src="/vendor/polar-twin-3d.bundle.js"></script>
+</head>
+<body>
+
+<div id="login" class="login-screen">
+  <div class="login-inner">
+    <div class="mark"></div>
+    <h1>POLAR TWIN</h1>
+    <div class="sub">Digital Intelligence for India's Antarctic Research Stations</div>
+    <div class="stations-row">
+      <div class="schip">🇮🇳 MAITRI — Schirmacher Oasis, Queen Maud Land</div>
+      <div class="schip">🇮🇳 BHARATI — Larsemann Hills</div>
+    </div>
+    <div class="pipeline">
+      <span>SEE</span><span class="sep">→</span><span>PREDICT</span><span class="sep">→</span><span>SIMULATE</span><span class="sep">→</span><span>DECIDE</span>
+    </div>
+    <div class="login-card" id="loginCard">
+      <label class="lbl" for="loginUser">Username / Employee ID</label>
+      <input type="text" id="loginUser" autocomplete="username" spellcheck="false" placeholder="e.g. employee ID">
+      <label class="lbl" for="loginPass">Password</label>
+      <input type="password" id="loginPass" autocomplete="current-password" placeholder="Password">
+      <div class="login-opts"><label><input type="checkbox" id="loginRemember"> Remember me</label><a href="#" id="forgotLink">Forgot password?</a></div>
+      <div class="login-error" id="loginError" role="alert" hidden></div>
+      <button class="enter-btn" id="enterBtn" type="button">LOGIN TO MISSION CONTROL</button>
+      <div class="proto-note">Prototype / Demo Environment</div>
+    </div>
+    <div class="small-note" style="max-width:480px;margin:18px auto 0;">Prototype built for SIH26060 (MoES / NCPOR). All telemetry shown is synthetic/simulated — this build has no connection to real NCPOR station systems. See Settings → Data Sources for details.</div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="nav-backdrop" id="navBackdrop"></div>
+  <div class="app-shell">
+    <div class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="brand"><div class="mark"></div> POLAR TWIN <span style="color:var(--text-faint);font-weight:400;font-size:11px;margin-left:4px;">Indian Antarctic Station Operations</span></div>
+      <div class="station-select" id="stationSelect">
+        <button data-st="ALL" class="active">ALL</button>
+        <button data-st="MAITRI">MAITRI</button>
+        <button data-st="BHARATI">BHARATI</button>
+      </div>
+      <div class="topbar-spacer"></div>
+      <div class="topbar-right">
+        <div class="comms-pill" id="commsPill"><span class="dot ok"></span> <span id="commsPillText">SATELLITE LINK CONNECTED</span></div>
+        <div class="user-chip" id="userChip"><span class="dot ok"></span><b id="userChipName"></b><span class="user-role" id="userChipRole"></span></div>
+        <select class="role-select" id="roleSelect" title="Admin: preview another role's focus">
+          <option>Admin</option><option>Station Engineer</option><option>Logistics Officer</option><option>Scientist</option><option>Emergency Officer</option>
+        </select>
+        <button class="demo-btn" id="demoBtn">▶ RUN DEMO</button>
+        <button class="demo-btn reset" id="resetDemoBtn">Reset Demo</button>
+        <button class="btn logout-btn" id="logoutBtn" title="Sign out">⏻ Logout</button>
+      </div>
+    </div>
+    <div class="sidebar" id="sidebar"></div>
+    <div class="main" id="main"></div>
+  </div>
+</div>
+
+<div class="emergency-overlay" id="emergencyOverlay"></div>
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
